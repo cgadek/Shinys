@@ -1,4 +1,3 @@
-
 #Shiny app for interactive visualization of Lotka-Volterra Predator-Prey Model
 library(shiny)
 library(tidyverse)
@@ -20,10 +19,10 @@ ui <- fluidPage(
   # Sidebar with slider inputs for parameters
   sidebarLayout(
     sidebarPanel(
-      sliderInput('alpha', 'Intrinsic Growth Rate (alpha):', min = 0, max = 5, value = 0, step = 0.1),
-      sliderInput('beta', 'Predation Rate (beta):', min = 0, max = 1, value = 0),
-      sliderInput('delta', 'Prey Conversion Rate (delta):', min = 0, max = 1, value = 0),
-      sliderInput('gamma', 'Predator Mortality (gamma):', min = 0, max = 1, value = 0)
+      sliderInput('r', 'Intrinsic Growth Rate (r):', min = 0, max = 5, value = 0, step = 0.1),
+      sliderInput('K', 'Carrying capacity of environment:', min = 1, max = 1000, value = 10),
+      sliderInput('a', 'strength of competition species a:', min = 0, max = 1, value = 0),
+      sliderInput('b', 'strength of competition species b:', min = 0, max = 1, value = 0)
     ),
     
     # Show a plot of the results
@@ -42,21 +41,21 @@ ui <- fluidPage(
 server <- function(input, output) {
   
   # Define a reactive expression for the model results
-  lv_results <- reactive({
+  km_results <- reactive({
     # Get the current parameters from input within this reactive context
-    pars <- c(alpha = input$alpha, beta = input$beta, delta = input$delta, gamma = input$gamma)
-    
+    pars <- c(r = input$r, K = input$K, a = input$a, b = input$b)
+    #pars <- c(r=0.1, K=0.2, a=0.1, b=0.11) for testing purposes
     # Lotka-Volterra model function with current parameters
-    lv_model <- function(pars, times = seq(0, 50, by = 0.25)) {
+    km_model <- function(pars, times = seq(0, 50, by = 0.25)) {
       # Initial state
-      state <- c(x = 2, y = 1)
+      state <- c(N = 2, P = 1)
       
       # Derivative function
       deriv <- function(t, state, pars) {
         with(as.list(c(state, pars)), {
-          d_x <- alpha * x - beta * x * y
-          d_y <- delta * x * y - gamma * y
-          return(list(c(d_x, d_y)))
+          d_N <- r * N *(1-N/K) -a*N*P
+          d_P <- r * P *(1-P/K) -b*N*P
+          return(list(c(d_N, d_P)))
         })
       }
       
@@ -65,21 +64,21 @@ server <- function(input, output) {
     }
     
     # Call the model with updated parameters
-    lv_model(pars = pars)
+    km_model(pars = pars)
   })
   
   # Render the plot
   output$distPlot <- renderPlot({
     # Get results from reactive expression
-    lv_data <- lv_results() %>% 
+    km_data <- km_results() %>% 
       as.data.frame() %>% 
       gather(var, pop, -time) %>% 
-      mutate(var = if_else(var == "x", "Prey", "Predator"))
+      mutate(var = if_else(var == "N", "species a", "species b"))
     
     # Generate the plot with dynamic subtitle
-    ggplot(lv_data, aes(x = time, y = pop)) +
+    ggplot(km_data, aes(x = time, y = pop)) +
       geom_line(aes(color = var), linewidth=1.2) +
-      scale_color_manual(values=c("brown", "goldenrod")) +
+      scale_color_manual(values=c("darkseagreen", "darkgreen")) +
       labs(
         title = "",
         subtitle = paste("alpha =", input$alpha, "; beta =", input$beta, 

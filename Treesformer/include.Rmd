@@ -1,0 +1,14 @@
+
+# Transformations of phylogenetic trees are useful tools to test for phylogenetic signal and different modes of evolution.
+Phylogenetic trees are inherently visual hypotheses, and visualizing their transformations can help us understand how tests of phylogenetic signal and modes of evolution work. At their core phylogenetic trees represent the degree of similarity among the species represented by tips and internal nodes of tree. These relationships can be described as pairwise distances in a matrix called the phylogenetic variance-covariance matrix. 
+ 
+$$
+\frac{dx}{dt} = \alpha x - \beta x y
+$$
+$$
+\frac{dy}{dt} = \delta x y - \gamma y
+$$
+
+
+
+Where $\alpha$ represents the exponential growth rate of the prey (think reproduction), $\beta$ is the predation rate or how readily predators encounter prey, $\delta$ describes how efficiently predators convert prey to offspring, and $\gamma$, the predator mortality rate ☠️.
