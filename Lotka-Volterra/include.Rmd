@@ -1,0 +1,20 @@
+
+# So you want to learn about predator prey cycles?
+Predators eat prey and prey decrease in numbers. The resulting drop in prey has negative feedback on predator numbers. 
+Over time, these interactions produce lagged cyclical dynamics. That is, there is some amount of time between peaks and 
+dips in prey and predator numbers——with predators following behind prey.
+
+These interactions were famously modeled as a system of two ordinary differential equations developed independently by a chemist, 
+[Alfred J. Lotka](https://en.wikipedia.org/wiki/Alfred_J._Lotka) and a mathematician/physicist, [Vito Volterra](https://en.wikipedia.org/wiki/Vito_Volterra"). The equations dictate the density of the prey (**$x$**) and predator (**$y$**) as:
+
+ 
+$$
+\frac{dx}{dt} = \alpha x - \beta x y
+$$
+$$
+\frac{dy}{dt} = \delta x y - \gamma y
+$$
+
+
+
+Where $\alpha$ represents the exponential growth rate of the prey (think reproduction), $\beta$ is the predation rate or how readily predators encounter prey, $\delta$ describes how efficiently predators convert prey to offspring, and $\gamma$, the predator mortality rate ☠️.
