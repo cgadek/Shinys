@@ -1,0 +1,3 @@
+**Try applying each type of transformation and adjusting the scalar. Notice how the shape of the tree changes through branch length adjustments.**
+
+ $\lambda$ is the most widely used and well known transformation. It works by multiplying all off-diagonal elements in the phylogenetic covariance matrix by a value (surprise! $\lambda$) which is restricted to values 0 $\ge$ $\lambda$ $\le$ 1. This means it compresses or stretches internal branches while leaving terminal branches (tips) alone. $\lambda$ = 1 means the tree/ traits are evolving under a constant rate process--in this case Brownian motion. $\lambda$ = 0 means each species is statictsically independent or none are more or less related to any other.

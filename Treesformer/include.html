@@ -352,26 +352,26 @@ display: none;
 </div>
 
 
-<div id="transformations-of-phylogenetic-trees-are-useful-tools-to-test-for-phylogenetic-signal-and-different-modes-of-evolution." class="section level1">
-<h1>Transformations of phylogenetic trees are useful tools to test for
-phylogenetic signal and different modes of evolution.</h1>
-<p>Phylogenetic trees are inherently visual hypotheses, and visualizing
-their transformations can help us understand how tests of phylogenetic
-signal and modes of evolution work. At their core phylogenetic trees
-represent the degree of similarity among the species represented by tips
-and internal nodes of tree. These relationships can be described as
-pairwise distances in a matrix called the phylogenetic
-variance-covariance matrix.</p>
-<p><span class="math display">\[
-\frac{dx}{dt} = \alpha x - \beta x y
-\]</span> <span class="math display">\[
-\frac{dy}{dt} = \delta x y - \gamma y
-\]</span></p>
-<p>Where <span class="math inline">\(\alpha\)</span> represents the
-exponential growth rate of the prey (think reproduction), <span class="math inline">\(\beta\)</span> is the predation rate or how
-readily predators encounter prey, <span class="math inline">\(\delta\)</span> describes how efficiently
-predators convert prey to offspring, and <span class="math inline">\(\gamma\)</span>, the predator mortality rate
-☠️.</p>
+<div id="tempo-of-trait-evolution." class="section level1">
+<h1>Tempo of trait evolution.</h1>
+<p>Phylogenetic trees are inherently visual hypotheses. They tell us
+about evolutionary relationships through their arrangement of tips,
+nodes, and branching patterns. They also tell us something about
+relative amount of evolutionary change through their branch lengths.
+Longer branches have had more time for a lineages’ (species’) attributes
+to change.</p>
+<p>One common use for phylogenetic trees beyond describing the
+relatedness of a group of organisms, is to estimate rates of trait
+evolution. Maybe we want to know: <strong>how rapidly is vision lost
+among cave dwelling fish?</strong> Or <strong>how often have insects
+lost or gained flight?</strong> To address questions like these we start
+with a null model of constant evolution rates through time. In <a href="https://www.nature.com/articles/44766">1999 Mark Pagel</a>
+proposed three statistical models that can be thought of as branch
+length transformations (lamda: <span class="math inline">\(\lambda\)</span>, delta: <span class="math inline">\(\delta\)</span>, and kappa: <span class="math inline">\(\kappa\)</span>). Each can be used to test for
+deviations from a constant rate of evolution. The models work by
+transforming the phylogenetic variance covariance matrix which is
+essentially the tree represented as a matrix of pairwise distances among
+all tips and nodes.</p>
 </div>
 
 

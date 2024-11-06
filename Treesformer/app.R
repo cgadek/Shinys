@@ -31,18 +31,21 @@ ui <- fluidPage(
                   value = 0.5),
       selectInput("trans", 
                   "Transformation type", 
-                  choices = c("lambda", "delta", "kappa"))
+                  choices = c("lambda", "delta", "kappa")),
+      plotOutput("distPlot")
     ),
     mainPanel(
-      plotOutput("distPlot"),
       
       fluidRow(
-        column(11,
+        column(12,
                withMathJax(includeHTML("include.html"))
         ),
         column(12,
                h4("Phylogenetic Variance-Covariance Matrix"),
                tableOutput("matrix")
+        ),
+        column(12,
+               withMathJax(includeHTML("include2.html"))
         )
       )
     )
