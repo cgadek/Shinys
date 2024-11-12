@@ -1,0 +1,1 @@
+Adjust the slope ($\beta$) and intercept ($a$) of the blue dashed regression line to get a feel for how the model changes as a whole. Under the hood each time you make an adjustment the app is simulating new data from a normal distribution that generates response variables parameterized with the specified $a$ and $\beta$ values.
