@@ -27,12 +27,14 @@ ui <- fluidPage(
       sliderInput("scalar",
                   "Transformation scalar",
                   min = 0,
-                  max = 1,
-                  value = 0.5),
+                  max = 2,
+                  value = 1, 
+                  step = 0.1),
       selectInput("trans", 
                   "Transformation type", 
                   choices = c("lambda", "delta", "kappa")),
-      plotOutput("distPlot")
+      plotOutput("distPlot"),
+      titlePanel("Sorry about the mess -> \n the matrix doesn't scale with the number of tips in the tree"),
     ),
     mainPanel(
       

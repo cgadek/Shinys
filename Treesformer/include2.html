@@ -359,13 +359,32 @@ adjustments.</strong></p>
 and well known transformation. It works by multiplying all off-diagonal
 elements in the phylogenetic covariance matrix by a value (surprise!
 <span class="math inline">\(\lambda\)</span>) which is restricted to
-values 0 <span class="math inline">\(\ge\)</span> <span class="math inline">\(\lambda\)</span> <span class="math inline">\(\le\)</span> 1. This means it compresses or
-stretches internal branches while leaving terminal branches (tips)
-alone. <span class="math inline">\(\lambda\)</span> = 1 means the tree/
-traits are evolving under a constant rate process–in this case Brownian
-motion. <span class="math inline">\(\lambda\)</span> = 0 means each
-species is statictsically independent or none are more or less related
-to any other.</p>
+values 0 <span class="math inline">\(\ge\)</span> <span class="math inline">\(\lambda\)</span> <span class="math inline">\(\le\)</span> 1 (<em>Notice that setting the value
+&gt;1 creates meaningless tree structures</em>). This means it
+compresses or stretches internal branches while leaving terminal
+branches (tips) alone. <span class="math inline">\(\lambda\)</span> = 1
+means the tree/ traits are evolving under a constant rate process–in
+this case Brownian motion. <span class="math inline">\(\lambda\)</span>
+= 0 means each species is statistically independent or none are more or
+less related to any other.</p>
+<p><span class="math inline">\(\delta\)</span> transforms the tree to
+capture varying rates of evolution through time by raising each element
+in the matrix above the power <span class="math inline">\(\delta\)</span>. Each element in the matrix
+represents a node in the tree so raising all nodes to <span class="math inline">\(\delta = 1\)</span> does nothing to the tree. If
+<span class="math inline">\(\delta &lt; 1\)</span> each node is
+shortened, but internal nodes (not tips/extant species) are shortened
+less, representing a slowdown of evolutionary rates towards the present.
+Try setting <span class="math inline">\(\delta\)</span> to a value less
+than 1. Does this visually translate to a slowing evolutionary rate?
+Likewise, you can simulate a speed up of the evolutionary rate towards
+the present by setting <span class="math inline">\(\delta &gt;
+1\)</span>.</p>
+<p><span class="math inline">\(\kappa\)</span> is a weirder one and it
+can capture “speciational” dynamics in trees. It works by raising each
+branch length (not element in the matrix above) by the value <span class="math inline">\(\kappa\)</span>. When <span class="math inline">\(\kappa = 1\)</span> the tree is unchanged. When
+<span class="math inline">\(\kappa = 0\)</span> all branch lengths are
+1. <span class="math inline">\(\kappa\)</span> is interpreted as a model
+where rates of evolutionary change are fastest at speciation events.</p>
 
 
 
